@@ -3,3 +3,4 @@
 - Allows you to jot down notes
 - Allows you to set timers
 - Syncs across all your devices on chrome
+Extension available on the Google Chrome Webstore.
