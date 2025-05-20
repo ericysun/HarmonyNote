@@ -4,3 +4,9 @@
 - Allows you to set timers
 - Syncs across all your devices on chrome
 Extension available on the Google Chrome Webstore.
+
+### Installation Instructions
+- Download the zip file from the repository and extract the contents
+- Open the extension page in Google Chrome: type 'chrome://extensions' in the url bar and press enter.
+- Turn on the switch on the top right of the page that says "Developer mode".
+- Click on the button on the top left of the page that says "Load unpacked". Then select a folder that contains the manifest.json file.
