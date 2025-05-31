@@ -1,4 +1,6 @@
-# HarmonyNote
+
+# HarmonyNote![AppIcon128x128](https://github.com/user-attachments/assets/8c556746-8ef9-47c6-b17e-a36cd00b5999)
+
 ## A Chrome Extension to jot down, note, tasks, reminders from the convenience of your browser
 - Allows you to jot down notes
 - Allows you to set timers
