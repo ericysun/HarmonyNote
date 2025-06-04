@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "Sticky Note Reminder",
+    "name": "HarmonyNote",
     "version": "1.0",
-    "description": "Add sticky notes with reminders in your browser.",
+    "description": "A platform to track notes, tasks, reminders that syncs across your devices.",
     "permissions": ["storage", "notifications", "alarms"],
     "background": {
       "service_worker": "background.js"
