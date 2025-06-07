@@ -71,3 +71,30 @@ button:hover {
   color: #003366;
 }
 
+.note-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px; /* Space between the text area and date picker */
+}
+
+textarea {
+  flex: 1; /* Allow the text area to take up remaining space */
+  height: 100px;
+  border: 1px solid #007acc;
+  border-radius: 5px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+#reminderTime {
+  width: 40px; /* Collapsed width */
+  transition: width 0.3s ease; /* Smooth transition for expansion */
+  border: 1px solid #007acc;
+  border-radius: 5px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+#reminderTime.expanded {
+  width: 150px; /* Expanded width */
+}

@@ -1,5 +1,10 @@
-// Array to store reminders
 const reminders = [];
+
+// Expand the date picker on click
+const reminderTimeInput = document.getElementById("reminderTime");
+reminderTimeInput.addEventListener("click", () => {
+  reminderTimeInput.classList.toggle("expanded");
+});
 
 // Function to add a new reminder
 document.getElementById("save").addEventListener("click", () => {
@@ -48,6 +53,15 @@ function displayReminders() {
       const index = e.target.getAttribute("data-index");
       const details = remindersDiv.children[index].querySelector(".reminder-details");
       details.style.display = details.style.display === "none" ? "block" : "none";
+    });
+  });
+
+  // Add event listeners to check buttons
+  document.querySelectorAll(".check-btn").forEach((button) => {
+    button.addEventListener("click", (e) => {
+      const index = e.target.getAttribute("data-index");
+      reminders.splice(index, 1); // Remove the reminder from the array
+      displayReminders(); // Refresh the reminders display
     });
   });
 
