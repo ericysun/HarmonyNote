@@ -1,7 +1,14 @@
 const reminders = [];
 
 // Expand the date picker on click
+const datePickerButton = document.getElementById("datePickerButton");
 const reminderTimeInput = document.getElementById("reminderTime");
+
+datePickerButton.addEventListener("click", () => {
+  reminderTimeInput.showPicker?.(); // Use the `showPicker` method if supported
+  reminderTimeInput.click(); // Fallback to trigger the native date picker
+});
+
 reminderTimeInput.addEventListener("click", () => {
   reminderTimeInput.classList.toggle("expanded");
 });
@@ -55,6 +62,16 @@ function displayReminders() {
       details.style.display = details.style.display === "none" ? "block" : "none";
     });
   });
+
+  // Add event listeners to check buttons
+  document.querySelectorAll(".check-btn").forEach((button) => {
+    button.addEventListener("click", (e) => {
+      const index = e.target.getAttribute("data-index");
+      reminders.splice(index, 1); // Remove the reminder from the array
+      displayReminders(); // Refresh the reminders display
+    });
+  });
+
 
   // Add event listeners to check buttons
   document.querySelectorAll(".check-btn").forEach((button) => {
