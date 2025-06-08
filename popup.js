@@ -1,5 +1,6 @@
 const reminders = [];
 
+
 // Expand the date picker on click
 const datePickerButton = document.getElementById("datePickerButton");
 const reminderTimeInput = document.getElementById("reminderTime");
@@ -13,7 +14,7 @@ reminderTimeInput.addEventListener("click", () => {
   reminderTimeInput.classList.toggle("expanded");
 });
 
-// Function to add a new reminder
+//add a new reminder
 document.getElementById("save").addEventListener("click", () => {
   const note = document.getElementById("note").value;
   const reminderTime = document.getElementById("reminderTime").value;
@@ -22,15 +23,13 @@ document.getElementById("save").addEventListener("click", () => {
     const reminder = { note, reminderTime };
     reminders.push(reminder);
     displayReminders();
-    document.getElementById("status").innerText = "Reminder saved!";
-    document.getElementById("note").value = "";
-    document.getElementById("reminderTime").value = "";
+    document.getElementById("note").value = ""; // Clear the note input
+    document.getElementById("reminderTime").value = ""; // Clear the date input
   } else {
     document.getElementById("status").innerText = "Please fill out both fields.";
   }
 });
 
-// Function to display reminders
 function displayReminders() {
   const remindersDiv = document.getElementById("reminders");
   remindersDiv.innerHTML = ""; // Clear existing reminders
