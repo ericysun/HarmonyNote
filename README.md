@@ -13,3 +13,6 @@ Extension available on the Google Chrome Webstore.
 - Open the extension page in Google Chrome: type 'chrome://extensions' in the url bar and press enter.
 - Turn on the switch on the top right of the page that says "Developer mode".
 - Click on the button on the top left of the page that says "Load unpacked". Then select a folder that contains the manifest.json file.
+
+### Feedback: Bug and Feature Suggestion
+https://bit.ly/HarmonyNoteFeedback
