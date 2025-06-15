@@ -1,5 +1,4 @@
-
-![AppIcon128x128](https://github.com/user-attachments/assets/8c556746-8ef9-47c6-b17e-a36cd00b5999)
+<img width="780" alt="HarmonyNoteHeader" src="https://github.com/user-attachments/assets/c16f806a-7fd6-4e80-b20d-edfc5edd46eb" />
 
 # HarmonyNote
 ## A Chrome Extension to jot down, note, tasks, reminders from the convenience of your browser
