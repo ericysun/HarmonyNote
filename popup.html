@@ -11,12 +11,14 @@
     <span>HarmonyNote</span>
     <img src="LogoHighRes.png" alt="Favicon">
   </div>
-  <div class="note-container">
-    <textarea id="note" placeholder="Jot down notes here..."></textarea>
+<div class="note-container">
+  <textarea id="note" placeholder="Jot down notes here..."></textarea>
+  <div class="icon-stack">
+    <button id="save" title="Save"><span role="img" aria-label="Save">💾</span></button>
     <button id="datePickerButton" class="date-picker-btn">📅</button>
-    <input type="datetime-local" id="reminderTime" class="hidden">
   </div>
-  <button id="save">Save</button>
+  <input type="datetime-local" id="reminderTime" class="hidden">
+</div>
   <div id="status"></div>
   <div id="reminders"></div>
   <script src="popup.js"></script>

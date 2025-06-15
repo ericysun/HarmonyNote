@@ -117,22 +117,6 @@ textarea {
   margin: 0 5px; 
 }
 
-.date-picker-btn {
-  background-color: #007acc;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  width: 40px;
-  height: 40px;
-  font-size: 16px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  margin: 0 5px;
-}
-
 .date-picker-btn:hover {
   background-color: #005a99;
 }
@@ -146,43 +130,60 @@ textarea {
   gap: 5px;
 }
 
-.check-btn {
-  background-color: #007acc;
+.check-btn,
+.expand-btn {
+  background-color: #007acc !important;
   color: white;
   border: none;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  font-size: 12px;
+  border-radius: 15px;
+  width: 32px;
+  height: 32px;
+  font-size: 1.2em;
   font-weight: bold;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  transition: background 0.2s;
 }
 
 .check-btn:hover {
-  background-color: #007acf;/*make this a diff shade of blue later*/
-}
-
-.expand-btn {
-  background-color: #007acc;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  font-size: 12px;
-  font-weight: bold;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
+  background-color: #007acf !important;
 }
 
 .expand-btn:hover {
+  background-color: #005a99 !important;
+}
+
+.icon-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-stack button {
+  background-color: #007acc;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2em;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  transition: background 0.2s;
+}
+
+.icon-stack button:hover {
   background-color: #005a99;
 }
 
@@ -190,14 +191,17 @@ textarea {
   background-color: #007acc;
   color: white;
   border: none;
-  border-radius: 5px;
-  padding: 10px 15px;
-  cursor: pointer;
-  display: block;
-  margin: 5px auto;
-  text-align: center;
-  box-sizing: border-box; 
-  width: calc(100% - 10px);
+  border-radius: 8px;
+  padding: 0;
+  margin: 0;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  transition: background 0.2s;
 }
 
 #save:hover {
