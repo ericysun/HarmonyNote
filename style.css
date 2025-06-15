@@ -138,13 +138,16 @@ textarea {
 }
 
 .check-btn,
-.expand-btn {
-  background-color: #007acc !important;
+.expand-btn,
+#save,
+.date-picker-btn,
+.icon-stack button {
+  background-color: #007acc;
   color: white;
   border: none;
-  border-radius: 15px;
-  width: 32px;
-  height: 32px;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
   font-size: 1.2em;
   font-weight: bold;
   cursor: pointer;
@@ -157,12 +160,62 @@ textarea {
   transition: background 0.2s;
 }
 
-.check-btn:hover {
-  background-color: #007acf !important;
+.check-btn:hover,
+.expand-btn:hover,
+#save:hover,
+.date-picker-btn:hover,
+.icon-stack button:hover {
+  background-color: #005a99;
 }
 
-.expand-btn:hover {
-  background-color: #005a99 !important;
+.descriptionExpander {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.descriptionExpander span {
+  display: block;
+  position: absolute;
+  height: 2.5px;
+  width: 100%;
+  background: white;
+  border-radius: 2px;
+  opacity: 1;
+  left: 0;
+  transition: 0.25s;
+}
+
+.descriptionExpander span:nth-child(1) {
+  top: 0px;
+}
+.descriptionExpander span:nth-child(2),
+.descriptionExpander span:nth-child(3) {
+  top: 7.5px;
+}
+.descriptionExpander span:nth-child(4) {
+  top: 15px;
+}
+
+.descriptionExpander.open span:nth-child(1) {
+  top: 7.5px;
+  width: 0%;
+  left: 50%;
+}
+.descriptionExpander.open span:nth-child(2) {
+  transform: rotate(45deg);
+}
+.descriptionExpander.open span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+.descriptionExpander.open span:nth-child(4) {
+  top: 7.5px;
+  width: 0%;
+  left: 50%;
 }
 
 .icon-stack {
@@ -170,47 +223,5 @@ textarea {
   flex-direction: column;
   align-items: center;
   gap: 8px;
-}
-
-.icon-stack button {
-  background-color: #007acc;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.2em;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  transition: background 0.2s;
-}
-
-.icon-stack button:hover {
-  background-color: #005a99;
-}
-
-#save {
-  background-color: #007acc;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 0;
-  margin: 0;
-  width: 40px;
-  height: 40px;
-  font-size: 1.2em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  transition: background 0.2s;
-}
-
-#save:hover {
-  background-color: #005a99;
+  margin-right: 5px;
 }
