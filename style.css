@@ -46,6 +46,13 @@ button:hover {
   margin-top: 10px;
   font-size: 0.9em;
   color: #003366;
+  opacity: 0;
+  transition: opacity 0.5s;
+  margin-left: 5px;
+}
+
+#status.visible {
+  opacity: 1;
 }
 
 #reminders {

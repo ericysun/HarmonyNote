@@ -1,81 +1,108 @@
-const reminders = [];
+document.addEventListener("DOMContentLoaded", () => {
+  const reminders = [];
 
-// Expand the date picker on click
-const datePickerButton = document.getElementById("datePickerButton");
-const reminderTimeInput = document.getElementById("reminderTime");
+  // Placeholder animation
+  const textarea = document.getElementById("note");
+  const placeholderText = "Jot down notes here...";
+  let i = 0;
+  textarea.placeholder = "";
 
-datePickerButton.addEventListener("click", () => {
-  reminderTimeInput.showPicker?.(); // Use the `showPicker` method if supported
-  reminderTimeInput.click(); // Fallback to trigger the native date picker
-});
+  function typePlaceholder() {
+    if (i < placeholderText.length) {
+      textarea.placeholder += placeholderText.charAt(i);
+      i++;
+      setTimeout(typePlaceholder, 50);
+    }
+  }
+  typePlaceholder();
 
-reminderTimeInput.addEventListener("click", () => {
-  reminderTimeInput.classList.toggle("expanded");
-});
+  // Expand the date picker on click
+  const datePickerButton = document.getElementById("datePickerButton");
+  const reminderTimeInput = document.getElementById("reminderTime");
 
-// Add a new reminder
+  datePickerButton.addEventListener("click", () => {
+    reminderTimeInput.showPicker?.();
+    reminderTimeInput.click();
+  });
+
+  reminderTimeInput.addEventListener("click", () => {
+    reminderTimeInput.classList.toggle("expanded");
+  });
+
+  // Add a new reminder
 document.getElementById("save").addEventListener("click", () => {
   const note = document.getElementById("note").value;
   const reminderTime = document.getElementById("reminderTime").value;
+  const status = document.getElementById("status");
 
   if (note) {
-    const reminder = { note, reminderTime: reminderTime || null }; // Allow reminders without dates
+    const reminder = { note, reminderTime: reminderTime || null };
     reminders.push(reminder);
-    sortRemindersByDate(); // Sort reminders by date
+    sortRemindersByDate();
     displayReminders();
-    document.getElementById("note").value = ""; 
-    document.getElementById("reminderTime").value = ""; 
+    document.getElementById("note").value = "";
+    document.getElementById("reminderTime").value = "";
+    status.innerText = "";
+    status.classList.remove("visible");
   } else {
-    document.getElementById("status").innerText = "Please enter a note.";
+    status.innerText = "Please enter a note.";
+    status.classList.add("visible");
+    setTimeout(() => {
+      status.classList.remove("visible");
+      setTimeout(() => {
+        status.innerText = "";
+      }, 500);
+    }, 3000);
   }
 });
 
-// Function to sort reminders by date
-function sortRemindersByDate() {
-  reminders.sort((a, b) => {
-    if (!a.reminderTime) return 1; // Reminders without dates go to the bottom
-    if (!b.reminderTime) return -1;
-    return new Date(a.reminderTime) - new Date(b.reminderTime); // Sort by date (earlier dates first)
-  });
-}
+  // Function to sort reminders by date
+  function sortRemindersByDate() {
+    reminders.sort((a, b) => {
+      if (!a.reminderTime) return 1;
+      if (!b.reminderTime) return -1;
+      return new Date(a.reminderTime) - new Date(b.reminderTime);
+    });
+  }
 
-// Function to display reminders
-function displayReminders() {
-  const remindersDiv = document.getElementById("reminders");
-  remindersDiv.innerHTML = ""; // Clear existing reminders
+  // Function to display reminders
+  function displayReminders() {
+    const remindersDiv = document.getElementById("reminders");
+    remindersDiv.innerHTML = "";
 
-  reminders.forEach((reminder, index) => {
-    const tile = document.createElement("div");
-    tile.className = "reminder-tile";
-    tile.innerHTML = `
-      <div class="reminder-header">
-        <span>${reminder.note}</span>
-        <div class="action-buttons">
-          <button class="check-btn" data-index="${index}">✔</button>
-          <button class="expand-btn" data-index="${index}">+</button>
+    reminders.forEach((reminder, index) => {
+      const tile = document.createElement("div");
+      tile.className = "reminder-tile";
+      tile.innerHTML = `
+        <div class="reminder-header">
+          <span>${reminder.note}</span>
+          <div class="action-buttons">
+            <button class="check-btn" data-index="${index}">✔</button>
+            <button class="expand-btn" data-index="${index}">+</button>
+          </div>
         </div>
-      </div>
-      <div class="reminder-details" style="display: none;">
-        <p>Date: ${reminder.reminderTime ? new Date(reminder.reminderTime).toLocaleString() : "No date set"}</p>
-        <p>Details: ${reminder.note}</p>
-      </div>
-    `;
-    remindersDiv.appendChild(tile);
-  });
-
-  document.querySelectorAll(".expand-btn").forEach((button) => {
-    button.addEventListener("click", (e) => {
-      const index = e.target.getAttribute("data-index");
-      const details = remindersDiv.children[index].querySelector(".reminder-details");
-      details.style.display = details.style.display === "none" ? "block" : "none";
+        <div class="reminder-details" style="display: none;">
+          <p>Date: ${reminder.reminderTime ? new Date(reminder.reminderTime).toLocaleString() : "No date set"}</p>
+          <p>Details: ${reminder.note}</p>
+        </div>
+      `;
+      remindersDiv.appendChild(tile);
     });
-  });
 
-  document.querySelectorAll(".check-btn").forEach((button) => {
-    button.addEventListener("click", (e) => {
-      const index = e.target.getAttribute("data-index");
-      reminders.splice(index, 1); 
-      displayReminders();
+    document.querySelectorAll(".expand-btn").forEach((button) => {
+      button.addEventListener("click", (e) => {
+        const index = e.target.getAttribute("data-index");
+        const details = remindersDiv.children[index].querySelector(".reminder-details");
+        details.style.display = details.style.display === "none" ? "block" : "none";
+      });
     });
-  });
-}
+
+    document.querySelectorAll(".check-btn").forEach((button) => {
+      button.addEventListener("click", (e) => {
+        const index = e.target.getAttribute("data-index");
+        reminders.splice(index, 1);
+        displayReminders();
+      });
+    });
+  }
+});
