@@ -70,31 +70,34 @@ document.getElementById("save").addEventListener("click", () => {
     const remindersDiv = document.getElementById("reminders");
     remindersDiv.innerHTML = "";
 
-  reminders.forEach((reminder, index) => {
-    const tile = document.createElement("div");
-    tile.className = "reminder-tile";
-    tile.innerHTML = `
-      <div class="reminder-header">
-        <span>${reminder.note}</span>
-        <div class="action-buttons">
-          <button class="check-btn" data-index="${index}">✔</button>
-          <button class="expand-btn" data-index="${index}" aria-label="Expand">
-            <div class="descriptionExpander">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </button>
-        </div>
+// ...inside displayReminders()...
+reminders.forEach((reminder, index) => {
+  const tile = document.createElement("div");
+  tile.className = "reminder-tile";
+  tile.innerHTML = `
+    <div class="reminder-header">
+      <span>${reminder.note}</span>
+      <div class="action-buttons">
+        <button class="check-btn" data-index="${index}">✔</button>
+        <button class="expand-btn" data-index="${index}" aria-label="Expand">
+          <div class="descriptionExpander">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
       </div>
-      <div class="reminder-details" style="display: none;">
-        <p>Date: ${reminder.reminderTime ? new Date(reminder.reminderTime).toLocaleString() : "No date set"}</p>
-        <p>Details: ${reminder.note}</p>
-      </div>
+    </div>
+    <div class="reminder-date">
+      ${reminder.reminderTime ? new Date(reminder.reminderTime).toLocaleString() : ""}
+    </div>
+    <div class="reminder-details" style="display: none;">
+      <p>${reminder.note}</p>
+    </div>
     `;
-    remindersDiv.appendChild(tile);
-  });
+  remindersDiv.appendChild(tile);
+});
 
 document.querySelectorAll(".expand-btn").forEach((button) => {
   button.addEventListener("click", (e) => {

@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   width: 250px;
   padding: 0;
   margin: 0;
@@ -57,6 +57,8 @@ button:hover {
 
 #reminders {
   margin-top: 20px;
+  max-height: 270px; /* prevent chrome extension window from getting too large: can display 3 reminders before needing to scroll*/
+  overflow-y: auto;
 }
 
 .reminder-tile {
@@ -79,10 +81,12 @@ button:hover {
   color: #003366;
 }
 
-.note-container {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
+.reminder-date {
+  font-size: 0.75em;
+  color: #555;
+  margin-left: 2px;
+  margin-top: 2px;
+  color: #003366;
 }
 
 textarea {
@@ -96,19 +100,32 @@ textarea {
 }
 
 #reminderTime {
-  width: 40px;
-  transition: width 0.3s ease;
+  position: absolute;
+  left: 50px; 
+  top: 0;
+  width: 150px;
+  z-index: 10;
+  background: white;
   border: 1px solid #007acc;
   border-radius: 5px;
   padding: 5px;
   box-sizing: border-box;
 }
 
+#reminderTime.hidden {
+  display: none;
+}
+
 #reminderTime.expanded {
   width: 150px;
 }
 
+#note {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
 .note-container {
+  font-family: Arial, Helvetica, sans-serif;
   display: flex;
   align-items: center;
   gap: 10px; 
@@ -224,4 +241,21 @@ textarea {
   align-items: center;
   gap: 8px;
   margin-right: 5px;
+  position: relative;
+}
+
+.note-fields {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 6px;
+}
+
+#reminder-title {
+  border: 1px solid #007acc;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 1em;
+  margin: 0 5px;
+  box-sizing: border-box;
 }
