@@ -90,18 +90,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const textarea = document.getElementById("note");
   const titleInput = document.getElementById("reminder-title");
   const descriptionPlaceholderText = "Add an optional description here...";
-  const titlePlaceholderText = "Jot down a reminder here...";
-  let i = 0;
   textarea.placeholder = "";
-
-  function typePlaceholder() {
-    if (i < descriptionPlaceholderText.length) {
+  for (let i = 0; i < descriptionPlaceholderText.length; i++) {
+    setTimeout(() => {
       textarea.placeholder += descriptionPlaceholderText.charAt(i);
-      i++;
-      setTimeout(typePlaceholder, 50);
-    }
+    }, 50 * i);
   }
-  typePlaceholder();
+
+
 
   const datePickerButton = document.getElementById("datePickerButton");
   const reminderTimeInput = document.getElementById("reminderTime");
