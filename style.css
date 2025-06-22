@@ -1,6 +1,6 @@
 body {
   font-family: Helvetica, Arial, sans-serif;
-  width: 250px;
+  width: 300px;
   padding: 0;
   margin: 0;
   background-color: #f0f8ff;
@@ -89,9 +89,20 @@ button:hover {
   color: #003366;
 }
 
-textarea {
+#note {
+  width: 100%;
   flex: 1;
-  height: 100px;
+  min-height: 80px;
+  font-family: Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+  margin: 0 5px;
+  border: 1px solid #007acc;
+  border-radius: 5px;
+  padding: 5px;
+  resize: vertical;
+}
+
+textarea {
   border: 1px solid #007acc;
   border-radius: 5px;
   padding: 5px;
@@ -120,25 +131,11 @@ textarea {
   width: 150px;
 }
 
-#note {
-  font-family: Helvetica, Arial, sans-serif;
-}
-
 .note-container {
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
-  align-items: center;
-  gap: 10px; 
-}
-
-textarea {
-  flex: 1;
-  height: 100px;
-  border: 1px solid #007acc;
-  border-radius: 5px;
-  padding: 5px; 
-  box-sizing: border-box;
-  margin: 0 5px; 
+  align-items: stretch;
+  gap: 10px;
 }
 
 .date-picker-btn:hover {
@@ -242,20 +239,23 @@ textarea {
   gap: 8px;
   margin-right: 5px;
   position: relative;
+  height: 136px;
 }
 
 .note-fields {
   display: flex;
   flex-direction: column;
   flex: 1;
-  gap: 6px;
+  height: 136px;
 }
 
 #reminder-title {
+  width: 100%;
+  height: 40px;
+  font-size: 1em;
+  margin: 0 5px 8px 5px;
+  box-sizing: border-box;
   border: 1px solid #007acc;
   border-radius: 5px;
   padding: 5px;
-  font-size: 1em;
-  margin: 0 5px;
-  box-sizing: border-box;
 }

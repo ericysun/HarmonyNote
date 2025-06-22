@@ -2,11 +2,16 @@ let reminders = [];
 
 function sortRemindersByDate() {
   reminders.sort((a, b) => {
+    if ((b.favorite ? 1 : 0) !== (a.favorite ? 1 : 0)) {
+      return (b.favorite ? 1 : 0) - (a.favorite ? 1 : 0);
+    }
     if (!a.reminderTime) return 1;
     if (!b.reminderTime) return -1;
     return new Date(a.reminderTime) - new Date(b.reminderTime);
   });
 }
+
+let isFavorite = false;
 
 function displayReminders() {
   const remindersDiv = document.getElementById("reminders");
@@ -17,7 +22,10 @@ function displayReminders() {
     tile.className = "reminder-tile";
     tile.innerHTML = `
       <div class="reminder-header">
-        <span>${reminder.note}</span>
+        <div style="display: flex; align-items: center;">
+          ${reminder.favorite ? '<span class="favorite-star" style="font-size: 1.3em; margin-right: 6px; color: gold;">★</span>' : ''}
+          <span class="reminder-title" style="font-weight: bold;">${reminder.title || ''}</span>
+        </div>
         <div class="action-buttons">
           <button class="check-btn" data-index="${index}">✔</button>
           <button class="expand-btn" data-index="${index}" aria-label="Expand">
@@ -34,7 +42,7 @@ function displayReminders() {
         ${reminder.reminderTime ? new Date(reminder.reminderTime).toLocaleString() : ""}
       </div>
       <div class="reminder-details" style="display: none;">
-        <p>${reminder.note}</p>
+        <p>${reminder.description ? reminder.description : ''}</p>
       </div>
       `;
     remindersDiv.appendChild(tile);
@@ -80,13 +88,15 @@ function saveReminders() {
 
 document.addEventListener("DOMContentLoaded", () => {
   const textarea = document.getElementById("note");
-  const placeholderText = "Jot down notes here...";
+  const titleInput = document.getElementById("reminder-title");
+  const descriptionPlaceholderText = "Add an optional description here...";
+  const titlePlaceholderText = "Jot down a reminder here...";
   let i = 0;
   textarea.placeholder = "";
 
   function typePlaceholder() {
-    if (i < placeholderText.length) {
-      textarea.placeholder += placeholderText.charAt(i);
+    if (i < descriptionPlaceholderText.length) {
+      textarea.placeholder += descriptionPlaceholderText.charAt(i);
       i++;
       setTimeout(typePlaceholder, 50);
     }
@@ -95,6 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const datePickerButton = document.getElementById("datePickerButton");
   const reminderTimeInput = document.getElementById("reminderTime");
+  const starButton = document.getElementById("starButton");
 
   datePickerButton.addEventListener("click", () => {
     reminderTimeInput.showPicker?.();
@@ -105,25 +116,34 @@ document.addEventListener("DOMContentLoaded", () => {
     reminderTimeInput.classList.toggle("expanded");
   });
 
+  starButton.addEventListener("click", () => {
+    isFavorite = !isFavorite;
+    starButton.querySelector('span').textContent = isFavorite ? '★' : '☆';
+  });
+
   loadReminders();
 
   document.getElementById("save").addEventListener("click", () => {
-    const note = document.getElementById("note").value;
+    const title = titleInput.value.trim();
+    const description = textarea.value;
     const reminderTime = document.getElementById("reminderTime").value;
     const status = document.getElementById("status");
 
-    if (note) {
-      const reminder = { note, reminderTime: reminderTime || null };
+    if (title) {
+      const reminder = { title, description, reminderTime: reminderTime || null, favorite: isFavorite };
       reminders.push(reminder);
       sortRemindersByDate();
       saveReminders();
       displayReminders();
-      document.getElementById("note").value = "";
+      titleInput.value = "";
+      textarea.value = "";
       document.getElementById("reminderTime").value = "";
+      isFavorite = false;
+      starButton.querySelector('span').textContent = '☆';
       status.innerText = "";
       status.classList.remove("visible");
     } else {
-      status.innerText = "Please enter a note.";
+      status.innerText = "Please enter a title.";
       status.classList.add("visible");
       setTimeout(() => {
         status.classList.remove("visible");

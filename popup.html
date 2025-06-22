@@ -12,12 +12,18 @@
     <img src="LogoHighRes.png" alt="Favicon">
   </div>
 <div class="note-container">
-  <textarea id="note" placeholder="Jot down notes here..."></textarea>
+  <div class="note-fields">
+    <input id="reminder-title" type="text" placeholder="Title (required)" maxlength="100" />
+    <textarea id="note" placeholder="Description (optional)"></textarea>
+  </div>
   <div class="icon-stack">
     <button id="save" title="Save"><span role="img" aria-label="Save">+</span></button>
     <button id="datePickerButton" class="date-picker-btn" type="button">
-  <img src="calenderIcon.png" alt="Pick a date" style="width:22px; height:22px;">
-</button>
+      <img src="calenderIcon.png" alt="Pick a date" style="width:22px; height:22px;">
+    </button>
+    <button id="starButton" title="Star" aria-label="Star" type="button">
+      <span role="img" aria-label="Star">☆</span>
+    </button>
   </div>
   <input type="datetime-local" id="reminderTime" class="hidden">
 </div>
