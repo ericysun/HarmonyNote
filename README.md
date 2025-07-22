@@ -8,7 +8,8 @@ HarmonyNote is a lightweight Chrome extension that lets you jot down quick notes
 - Set reminders with due dates and times, automatically sorted by how soon they’re coming up.
 - Star reminders to mark them as important.
 - Auto Save and Sync: Your notes persist across sessions and sync with your Google account.
-Extension available on the Google Chrome Webstore.
+
+<img width="2661" height="1547" alt="harmonyNoteDemo" src="https://github.com/user-attachments/assets/f92000b1-3268-44a0-a4df-a2348654acc6" />
 
 ### Installation Instructions
 - Download the zip file from the repository and extract the contents
