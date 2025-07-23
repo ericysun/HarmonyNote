@@ -1,11 +1,14 @@
 <img width="780" alt="HarmonyNoteHeader" src="https://github.com/user-attachments/assets/c16f806a-7fd6-4e80-b20d-edfc5edd46eb" />
 
 # HarmonyNote
-## A Chrome Extension to jot down, note, tasks, reminders from the convenience of your browser
-- Allows you to jot down notes
-- Allows you to set timers
-- Syncs across all your devices on chrome
-Extension available on the Google Chrome Webstore.
+## A lightweight Chrome Extension that syncs across devices on Chrome to jot down notes and set reminders
+HarmonyNote is a lightweight Chrome extension that lets you jot down quick notes and set reminders, syncing across your devices. Whether you're capturing thoughts, planning tasks, or scheduling nudges for later, HarmonyNote helps you stay focused without getting in the way.
+- Write and save notes right from your browser toolbar.
+- Set reminders with due dates and times, automatically sorted by how soon they’re coming up.
+- Star reminders to mark them as important.
+- Auto Save and Sync: Your notes persist across sessions and sync with your Google account.
+
+<img width="2661" height="1547" alt="harmonyNoteDemo" src="https://github.com/user-attachments/assets/f92000b1-3268-44a0-a4df-a2348654acc6" />
 
 ### Installation Instructions
 - Download the zip file from the repository and extract the contents
